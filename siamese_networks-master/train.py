@@ -5,6 +5,7 @@ import tensorflow_datasets as tfds
 import configparser
 import argparse
 import numpy as np
+import tfds_sketchy
 
 #---------------------------------------------------------------------------------------
 def map_func(example_serialized):    
