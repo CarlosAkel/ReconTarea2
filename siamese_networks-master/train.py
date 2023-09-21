@@ -45,7 +45,7 @@ if __name__ == '__main__':
     if not args.gpu is None :
         gpu_id = args.gpu
         
-    ds = tfds.load('tfds_look')        
+    ds = tfds.load('tfds_sketchy')        
     ds_train = ds['train']    
     ds_train = (
         ds_train.shuffle(1024)
