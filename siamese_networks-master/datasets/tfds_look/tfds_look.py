@@ -28,12 +28,12 @@ class TFDS_LOOK(tfds.core.GeneratorBasedBuilder):
         )
     
     def _split_generators(self, dl_manager: tfds.download.DownloadManager):           
-        self.path = '/mnt/hd-data/Datasets/Totally-Looks-Like-Data-20230824T145910Z-001/Totally-Looks-Like-Data'    #path to data    
-        imcodes_train = os.path.join(self.path, 'list_codes_train.txt')
-        imcodes_test = os.path.join(self.path, 'list_codes_test.txt')
+        self.path = os.getcwd()    #path to data    
+        # imcodes_train = os.path.join(self.path, 'list_codes_train.txt')
+        # imcodes_test = os.path.join(self.path, 'list_codes_test.txt')
         return {
-            'train': self._generate_examples(os.path.join(self.path,imcodes_train)),                    
-            'test': self._generate_examples(os.path.join(self.path,imcodes_test)),
+            'train': self._generate_examples(os.path.join(os.getcwd(), '/ReconTarea2/siamese_networks-master/train_photo_file_paths.txt')),                    
+            'test': self._generate_examples(os.path.join(os.getcwd(), '/ReconTarea2/siamese_networks-master/test_photo_file_paths.txt')),
             }
     
     def _generate_examples(self, fname):
