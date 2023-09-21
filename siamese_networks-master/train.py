@@ -8,19 +8,23 @@ import numpy as np
 import tfds_sketchy
 
 #---------------------------------------------------------------------------------------
-def map_func(example_serialized):    
-#     features_map=tfds.features.FeaturesDict({'image': tfds.features.Image(shape=(None, None, 3)),
-#                                               'label': tfds.features.ClassLabel(names=range(100))})
-#     features = tf.io.parse_example(example_serialized, features_map)
-    image_anchor = example_serialized['image-anchor']
-    image_positive = example_serialized['image_positive']    
-    image_anchor = tf.image.resize_with_pad(image_anchor, 256, 256)
-    image_positive = tf.image.resize_with_pad(image_positive, 256, 256)
-    image_anchor = tf.image.random_crop(image_anchor, size = [224, 224, 3])
-    image_positive = tf.image.random_crop(image_positive, size = [224, 224, 3])
-    image_positive = tf.cast(image_positive, tf.float32)    
-    image_anchor = tf.cast(image_anchor, tf.float32)
-    return image_anchor, image_positive 
+def map_func(example_serialized):
+    image_sketch = example_serialized['sketch']
+    image_photo = example_serialized['photo']
+
+    # Resize images
+    image_sketch = tf.image.resize(image_sketch, [256, 256])
+    image_photo = tf.image.resize(image_photo, [256, 256])
+
+    # Random crop
+    image_sketch = tf.image.random_crop(image_sketch, size=[224, 224, 3])
+    image_photo = tf.image.random_crop(image_photo, size=[224, 224, 3])
+
+    # Cast to float32
+    image_sketch = tf.cast(image_sketch, tf.float32)
+    image_photo = tf.cast(image_photo, tf.float32)
+
+    return image_sketch, image_photo
 
         
 AUTO = tf.data.AUTOTUNE
