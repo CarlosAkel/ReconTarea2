@@ -20,7 +20,8 @@ def view_pair_dataset(ds, n_rows) :
 # Load your custom dataset
 train_ds, valid_known_ds, valid_unknown_ds = tfds.load(
     'tfds_sketchy',
-    split=['train', 'validation_known', 'validation_unknown']
+    split=['train', 'validation_known', 'validation_unknown'],
+    data_dir="/content/tensorflow_datasets"
     )
 
 batch_size = 32

@@ -10,7 +10,7 @@ _VALID_KNOWN_FILE = './valid_known.txt'
 _VALID_UNKNOWN_FILE = './valid_unknown.txt'
 
 class tfds_sketchy(tfds.core.GeneratorBasedBuilder):
-    VERSION = tfds.core.Version('1.0.0')
+    VERSION = tfds.core.Version('1.0.1')
 
     def get_categories(self):
         with open(_CATEGORIES_FILE) as json_file:

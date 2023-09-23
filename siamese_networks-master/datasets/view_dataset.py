@@ -5,6 +5,7 @@ import numpy as np
 import time
 from PIL import Image
 from io import BytesIO
+import tfds_sketchy
 
 def view(ds, n_rows) :    
     n_cols = 3
@@ -51,7 +52,7 @@ def map_func(example_serialized):
 if __name__ == '__main__' :
     #data_dir ='/mnt/hd-data/Datasets/imagenet/tfds'
     start = time.time()
-    ds = tfds.load('tfds_look')
+    ds = tfds.load('tfds_sketchy')
     end = time.time()
     et = int(((end - start )* 1000))
     print('ds loaded ok. Elapsed Time: {}'.format(et))
